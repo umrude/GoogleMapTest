@@ -50,7 +50,7 @@
     var markers = [];
 
     function initMap() {
-      var vancouver = {
+      const vancouver = {
       lat: 49.2827,
       lng: -123.1207,
       };
@@ -81,7 +81,7 @@
 
     // Sets the map on all markers in the array.
     function setMapOnAll(map) {
-      for (var i = 0; i < markers.length; i++) {
+      for (let i = 0; i < markers.length; i++) {
         markers[i].setMap(map);
       }
     }
