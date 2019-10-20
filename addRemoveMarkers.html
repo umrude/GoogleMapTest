@@ -55,6 +55,7 @@
       lng: -123.1207,
       };
 
+function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
         zoom: 12,
         center: vancouver,
@@ -63,6 +64,7 @@
 
       // This event listener will call addMarker() when the map is clicked.
       map.addListener('click', function (event) {
+        console.log(event);
         addMarker(event.latLng);
       });
 
@@ -101,6 +103,7 @@
       clearMarkers();
       markers = [];
     }
+  }
   </script>
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAizHHpGJRRQZP4E7XtznLH57lAzqdmyyg&callback=initMap">
