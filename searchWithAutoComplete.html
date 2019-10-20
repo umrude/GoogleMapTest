@@ -107,7 +107,7 @@
     // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
     function initAutocomplete() {
-      var map = new google.maps.Map(document.getElementById('map'), {
+      let map = new google.maps.Map(document.getElementById('map'), {
         center: {
           lat: 49.2827,
           lng: -123.1207
@@ -117,8 +117,8 @@
       });
 
       // Create the search box and link it to the UI element.
-      var input = document.getElementById('pac-input');
-      var searchBox = new google.maps.places.SearchBox(input);
+      let input = document.getElementById('pac-input');
+      let searchBox = new google.maps.places.SearchBox(input);
       map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
       // Bias the SearchBox results towards current map's viewport.
@@ -126,24 +126,28 @@
         searchBox.setBounds(map.getBounds());
       });
 
-      var markers = [];
+      let markers = [];
       // Listen for the event fired when the user selects a prediction and retrieve
       // more details for that place.
       searchBox.addListener('places_changed', function () {
-        var places = searchBox.getPlaces();
-
+        let places = searchBox.getPlaces();
+        
+        //Here we can see the full name of location, images, ect!! might be more useful than geocoding!!!!!!
+        console.log(places);
+        
         if (places.length == 0) {
           return;
         }
 
+        //IF THIS IS REMOVED WE CAN STILL SEE MARKERS FROM PREVIOUS SEARCH QUERIES!!!!!!!
         // Clear out the old markers.
-        markers.forEach(function (marker) {
-          marker.setMap(null);
-        });
-        markers = [];
+        // markers.forEach(function (marker) {
+        //   marker.setMap(null);
+        // });
+        // markers = [];
 
         // For each place, get the icon, name and location.
-        var bounds = new google.maps.LatLngBounds();
+        let bounds = new google.maps.LatLngBounds();
         places.forEach(function (place) {
           if (!place.geometry) {
             console.log("Returned place contains no geometry");
